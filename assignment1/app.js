@@ -10,9 +10,15 @@ function LunchCheckController($scope) {
     $scope.lunch_menu = "";
     $scope.result = "";
     $scope.check_menu = function() {
+        lunch_menu = [];
         if ($scope.lunch_menu.length > 0) {
-            lunch_menu = $scope.lunch_menu.split(",");
-            console.log(lunch_menu.length);
+            // remove empty items
+            $scope.lunch_menu.split(",").forEach(function(item) {
+                if (item.trim().length > 0) {
+                    lunch_menu.push(item);
+                }
+            });
+
             if (lunch_menu.length <= 3) {
                 $scope.result = "Enjoy!";
             } else {
