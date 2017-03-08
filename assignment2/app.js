@@ -26,8 +26,8 @@
         var bought = [];
 
         service.buy = function(item_index) {
-            service.bought.append(service.tobuy[item_index])
-            service.tobuy.splice(item_index, 1)
+            bought.push(tobuy[item_index])
+            tobuy.splice(item_index, 1)
         };
 
         service.get_tobuy_items = function() {
