@@ -1,12 +1,12 @@
 (function(){
     'use strict';
     angular.module('ShoppingListCheckOff', [])
-    .controller('ToBuyController', toBuyController)
-    .controller('AlreadyBoughtController', alreadyBoughtController)
-    .service('ShoppingListCheckOffService', shoppingListCheckOffService)
+    .controller('ToBuyController', ToBuyController)
+    .controller('AlreadyBoughtController', AlreadyBoughtController)
+    .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
 
-    toBuyController.$inject = [ShoppingListCheckOffService]
-    function toBuyController(ShoppingListCheckOffService) {
+    ToBuyController.$inject = ['ShoppingListCheckOffService']
+    function ToBuyController(ShoppingListCheckOffService) {
         var tobuy = this;
         tobuy.items = ShoppingListCheckOffService.get_tobuy_items();
         tobuy.buy = function(item_index){
@@ -14,13 +14,13 @@
         };
     }
 
-    alreadyBoughtController.$inject = [ShoppingListCheckOffService]
-    function alreadyBoughtController(ShoppingListCheckOffService) {
+    AlreadyBoughtController.$inject = ['ShoppingListCheckOffService']
+    function AlreadyBoughtController(ShoppingListCheckOffService) {
         var bought = this;
         bought.items = ShoppingListCheckOffService.get_bought_items();
     }
 
-    function shoppingListCheckOffService() {
+    function ShoppingListCheckOffService() {
         var service = this;
         var tobuy = ['Chips', 'Cookies', 'Sugary Drinks', 'Biscuits'];
         var bought = [];
